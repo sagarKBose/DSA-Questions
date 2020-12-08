@@ -1,0 +1,13 @@
+class Solution{
+    int middle(int A, int B, int C){
+        //code here
+        int x, y;
+        x = Math.max(A,B);
+        y = Math.min(A,B);
+        
+        x = Math.max(x,C);
+        y = Math.min(y,C);
+       
+        return (A+B+C) - x - y;
+    }
+}
