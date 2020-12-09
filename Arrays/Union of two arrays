@@ -1,0 +1,11 @@
+public static void Union(int A[],int B[], int m, int n)
+	{
+	    HashSet<Integer> hs = new HashSet<>();
+	    
+	    for(int i=0;i<m;i++)
+	        hs.add(A[i]);
+	    
+	    for(int j=0;j<n;j++)
+	        hs.add(B[j]);
+	    System.out.println(hs.size());
+    }
