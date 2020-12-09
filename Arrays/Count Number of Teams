@@ -1,0 +1,30 @@
+class Solution {
+    public int numTeams(int[] arr) {
+        
+        int n = arr.length; int count = 0;
+        for(int j=1;j<n-1;j++)
+        {
+            int l_sm = 0, r_gr = 0;
+            int l_gr = 0, r_sm = 0;
+            
+            for(int i=0;i<j;i++)
+            {
+                if(arr[i]<arr[j])
+                    l_sm++;
+                else if(arr[i]>arr[j])
+                    l_gr++;
+            }
+            
+            for(int k=j+1;k<n;k++)
+            {
+                if(arr[j]<arr[k])
+                    r_gr++;
+                else if(arr[j]>arr[k])
+                    r_sm++;
+            }
+            
+            count = count + (l_sm*r_gr) + (l_gr*r_sm);
+        }
+        return count;
+    }
+}
