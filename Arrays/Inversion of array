@@ -1,0 +1,44 @@
+class Inversion_of_Array
+{
+    // arr[]: Input Array
+    // N : Size of the Array arr[]
+    
+    static long inversionCount(long arr[], long N)
+    {
+        // Your Code Here
+        merge_sort(arr,0,N-1);
+    }
+    static long merge_sort(long arr[], long l, long r)
+    {
+        long count = 0;
+        if(l<r)
+        {
+            long mid = (l+r)/2;
+            
+            count = count + merge_sort(arr,l,mid);
+            count = count + merge_sort(arr,mid+1,r);
+            count = count + merge(arr,l,mid,r);
+        }
+        return count;
+    }
+    
+    static long merge(long arr[], long l, long mid, long r)
+    {
+        long[] left = Arrays.copyOfRange(arr,l,mid+1);
+        long[] right= Arrays.copyOfRange(arr,mid+1,r+1);
+        
+        long i=0, j=0, k=l, swaps = 0;
+        
+        while(i<left.length && j<right.length)
+        {
+            if(left[i] <= right[j])
+                arr[k++] = left[i++];
+            else
+            {
+                arr[k++] = right[j++];
+                swaps = swaps + (m+1) - (l+i);
+            }
+        }
+        return swaps;
+    }
+}
