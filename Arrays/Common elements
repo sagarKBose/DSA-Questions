@@ -1,0 +1,33 @@
+ArrayList<Integer> commonElements(int A[], int B[], int C[], int n1, int n2, int n3) 
+    {
+        // code here 
+        int i=0, j=0, k=0;
+        ArrayList<Integer> ans = new ArrayList<Integer>();
+        while(i<n1 && j<n2 && k<n3)
+        {
+            if(A[i]==B[j] && B[j]==C[k])
+            {
+                ans.add(A[i]);
+                i++;
+                j++;
+                k++;
+            }
+            else if(A[i]<B[j])
+                i++;
+            else if(B[j]<A[i])
+                j++;
+            else if(A[i]==B[j])
+                k++;
+                
+            if(i>0 && i<n1)    
+                while(A[i]==A[i-1])
+                    i++;
+            if(j>0 && j<n2)
+                while(B[j]==B[j-1])
+                    j++;
+            if(k>0 && k<n3)
+                while(C[k]==C[k-1])
+                    k++;
+        }
+        return ans;
+    }
