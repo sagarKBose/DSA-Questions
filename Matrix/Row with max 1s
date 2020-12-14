@@ -1,0 +1,25 @@
+int rowWithMax1s(int arr[][], int n, int m) {
+        // code here
+        int first = Integer.MAX_VALUE, min_first = Integer.MAX_VALUE;
+        int row = -1;
+        
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<m;j++)
+            {
+                if(arr[i][j]==1)
+                {
+                    first = j;
+                    break;
+                }
+            }
+            
+            if(first<min_first)
+            {
+                row = i;
+                min_first = first;
+            }
+        }
+        
+        return row;
+    }
