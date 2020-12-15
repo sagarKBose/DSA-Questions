@@ -1,0 +1,14 @@
+int isPlaindrome(String S) {
+        // code here
+        int n = S.length();
+        int l=0, h=n-1;
+        
+        while(l<=h)
+        {
+            if(S.charAt(l)!=S.charAt(h))
+                return 0;
+            l++;
+            h--;
+        }
+        return 1;
+    }
