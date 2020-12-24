@@ -1,0 +1,28 @@
+    Node reverseList(Node head)
+    {
+        // code here
+        ArrayList<Integer> arr = new ArrayList<>();
+        
+        for(Node curr=head;curr!=null;curr=curr.next)
+            arr.add(curr.data);
+            
+        for(Node curr=head;curr!=null;curr=curr.next)
+            curr.data=arr.remove(arr.size()-1);
+            
+        return head;
+    }
+    
+    Node reverseList(Node head)
+    {
+        // code here
+        Node curr = head, prev = null;
+        
+        while(curr!=null)
+        {
+            Node next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        return prev;
+    }
