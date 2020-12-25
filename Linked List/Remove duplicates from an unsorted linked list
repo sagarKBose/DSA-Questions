@@ -1,0 +1,19 @@
+public Node removeDuplicates(Node head) 
+    {
+        // Your code here
+        Node curr = head, prev = null;
+        HashSet<Integer> hs = new HashSet<>();
+        
+        while(curr!=null)
+        {
+            if(hs.contains(curr.data))
+                prev.next = curr.next;
+            else
+            {
+                hs.add(curr.data);
+                prev = curr;
+            }
+            curr = curr.next;
+        }
+        return head; 
+    }
