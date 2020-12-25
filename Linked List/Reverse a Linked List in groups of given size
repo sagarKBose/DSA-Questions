@@ -1,0 +1,36 @@
+public static Node reverse(Node head, int k)
+    {
+        //Your code here
+        Node curr = head, prevFirst = null;
+        boolean isFirstPass = true;
+        
+        while(curr!=null)
+        {
+            Node prev = null, first = curr;
+            int c=0;
+            
+            while(curr!=null && c<k)
+            {
+                Node next = curr.next;
+                curr.next = prev;
+                prev = curr;
+                curr = next;
+                
+                c++;
+            }
+            
+            if(isFirstPass)
+            {
+                isFirstPass = false;
+                head = prev;
+            }
+            else
+            {
+                prevFirst.next = prev;
+            }
+            
+            prevFirst = first;
+        }
+        
+        return head;
+    }
