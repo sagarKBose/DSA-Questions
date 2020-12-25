@@ -1,0 +1,18 @@
+Node removeDuplicates(Node root)
+    {
+	// Your code here	
+	    Node curr = root;
+	    
+	    while(curr!=null && curr.next!=null)
+	    {
+	        Node temp = curr;
+	        
+	        while(temp.next!=null && temp.data==temp.next.data)
+	            temp = temp.next;
+	        
+	        curr.next = temp.next;
+	        curr = curr.next;
+	    }
+	    
+	    return root;
+    }
