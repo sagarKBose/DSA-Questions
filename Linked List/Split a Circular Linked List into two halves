@@ -1,0 +1,28 @@
+class gfg
+{
+        // Function  to split a circular LinkedList
+	    void splitList(circular_LinkedList list)
+        {
+             // Your code here
+             Node h = list.head;
+             
+             Node slow = h, fast = h;
+             
+             while(fast.next!=h && fast.next.next!=h)
+             {
+                 fast = fast.next.next;
+                 slow = slow.next;
+             }
+             
+             list.head2  = slow.next;
+             
+             list.head1 = h;
+             
+             slow.next = list.head1;
+             
+             if(fast.next==h)
+                fast.next = list.head2;
+             else
+                fast.next.next = list.head2;
+	 }
+}
