@@ -1,0 +1,58 @@
+class Intersect
+{
+		int intersectPoint(Node h1, Node h2)
+	{
+        // code here
+        int l1 = 0, l2 = 0;
+        
+        Node curr1 = h1, curr2 = h2;
+        
+        while(curr1!=null)
+        {
+            l1++;
+            curr1 = curr1.next;
+        }
+        
+        while(curr2!=null)
+        {
+            l2++;
+            curr2 = curr2.next;
+        } 
+        
+        int d = Math.abs(l2-l1);
+        if(l1>l2)
+        {
+            d = l1-l2;
+            return (getInterSection( h1,  h2, d));   
+        }
+        else 
+        {
+            return (getInterSection( h2,  h1, d));   
+        }
+        //return -1;
+	}
+	
+	int getInterSection(Node h1, Node h2, int d)
+	{
+	    Node curr1 = h1, curr2 = h2;
+	    int c = 0;
+	    
+	    while(curr1!=null && c<d)
+	    {
+	        c++;
+	        curr1 = curr1.next;
+	    }
+	    
+	    if(curr1==null) return 0;
+	    
+	    while(curr1!=null && curr2!=null)
+	    {
+	        if(curr1==curr2)
+	            return curr1.data;
+	            
+	        curr1 = curr1.next;
+	        curr2 = curr2.next;
+	    }
+	    return -1;
+	}
+}
