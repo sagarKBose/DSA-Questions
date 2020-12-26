@@ -1,0 +1,15 @@
+boolean isCircular(Node head)
+    {
+	// Your code here	
+	    
+	    Node curr = head.next, temp = head;
+	    
+	    while(curr!=null)
+	    {
+	        if(curr == temp)
+	            return true;
+	        
+	        curr = curr.next;
+	    }
+	    return false;
+    }
