@@ -1,0 +1,54 @@
+class Sol
+{
+    public static Node addOne(Node head) 
+    { 
+        //code here.
+        Node rev = head;
+        
+        rev = reverse(rev);
+        
+        rev = addOneUtil(rev);
+        
+        head = reverse(rev);
+        
+        return head;
+    }
+    
+    public static Node reverse(Node head)
+    {
+        Node curr = head, prev = null;
+        while(curr!=null)
+        {
+            Node next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        return prev;
+    }
+    
+    public static Node addOneUtil(Node head)
+    {
+        Node temp = null, curr = head;
+        
+        int carry = 1, sum = 0;
+        while(curr!=null)
+        {
+            sum = curr.data + carry;
+            
+            if(sum>9) carry = 1;
+            else
+                carry = 0;
+                
+            curr.data = sum%10;
+            
+            temp = curr;
+            curr = curr.next;
+        }
+        
+        if(carry>0)
+            temp.next = new Node(carry);
+            
+        return head;
+    }
+}
