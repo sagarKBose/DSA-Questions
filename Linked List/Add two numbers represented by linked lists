@@ -1,0 +1,66 @@
+class Solution{
+    static Node addLists(Node first, Node second){
+        // code here
+        // return head of sum list
+        
+        if(first == null) return second;
+        if(second == null) return first;
+        
+        Node l1 = rev(first), l2 = rev(second);
+        
+        Node head = l1; Node prev = null;
+        
+        int sum, carry = 0;
+        
+        while(l1!=null && l2!= null)
+        {
+            sum = l1.data + l2.data + carry;
+             
+            l1.data = sum % 10;
+            carry = sum / 10;
+            
+            prev = l1;
+            l1 = l1.next;
+            l2 = l2.next;
+        }
+        
+        if(l1!=null || l2!=null)
+        {
+            if(l2!=null)
+                prev.next = l2;
+            
+            l1 = prev.next;
+            
+            while(l1!=null)
+            {
+                sum = l1.data + carry;
+            
+                l1.data = sum % 10;
+                carry = sum / 10;
+                
+                prev = l1;
+                l1 = l1.next;
+            }
+        }
+        
+        if(carry>0)
+            prev.next = new Node(carry);
+        
+        return rev(head);
+    }
+    
+    static Node rev(Node head)
+    {
+        Node curr = head, prev = null;
+        
+        while(curr!=null)
+        {
+            Node next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        
+        return prev;
+    }
+}
