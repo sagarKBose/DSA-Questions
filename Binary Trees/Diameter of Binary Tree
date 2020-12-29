@@ -1,0 +1,26 @@
+class A
+    {
+        int ans = Integer.MIN_VALUE;
+    }
+    
+    int diameter(Node root) {
+        // Your code here
+        if(root==null) return 0;
+        
+        A a = new A();
+        
+        int height = getHeight(root,a);
+        
+        return a.ans;
+    }
+    
+    public int getHeight(Node root, A a)
+    {
+        if(root==null) return 0;
+        
+        int left = getHeight(root.left, a);
+        int right = getHeight(root.right, a);
+        
+        a.ans = Math.max(1+left+right,a.ans);
+        return Math.max(left,right)+1;
+    }
