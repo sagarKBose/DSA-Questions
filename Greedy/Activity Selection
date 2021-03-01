@@ -1,0 +1,35 @@
+class ActivityLog
+{
+    int start, finish;
+    ActivityLog(int a, int b)
+    {
+        this.start = a;
+        this.finish = b;
+    }
+}
+
+
+class Meeting {
+    public static int maxMeetings(int start[], int end[], int n) {
+        // add your code here
+        
+        ActivityLog arr[] = new ActivityLog[n];
+        for(int i=0;i<n;i++)
+            arr[i] = new ActivityLog(start[i], end[i]);
+            
+        Arrays.sort(arr,(a,b)->a.finish-b.finish);
+        
+        int count = 0;
+        int prev_finish = 0;
+        for(int i=0;i<n;i++)
+        {
+            if(arr[i].start > prev_finish)
+            {
+                count++;
+                prev_finish = arr[i].finish;
+            }
+        }
+        return count;
+        
+    }
+}
